@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- DASHBOARD FOR CUSTOMER REPRESENTATIVES AT BANK BRANCHES -->
+<!-- Visualisations and Queue Management -->
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Dashboard</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Analytics</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->    
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"><h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Content Row -->
+          <div class="row">      
+
+            <!-- Customer in row Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">People in queue</div>
+                      <div id="no.people" class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="far fa-users fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">People Served Today</div>
+                      <div id="srvd.people" class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="far fa-users fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+
+          <div class="row" id="user_card_mainrow">      
+
+          <div class="card card-body shadow h-100 py-1 mb-4 ml-3 mr-3" id="user_card" style="max-height:275px;line-height:3em;overflow:scroll;padding:5px;">
+
+            <div class="row" id="user_card_row">  </div>       
+          </div>
+        </div>
+ 
+        <!-- Content Row -->
+
+        <div class="row">
+
+		<div class="col-xl-8 col-lg-5">
+             <div class="card shadow mb-4">
+                <div class="card-header py-3 mb-4">
+                  <h6 class="m-0 font-weight-bold text-primary">Services</h6>
+                </div>
+                <div class="card-body">
+                  <h4 class="small font-weight-bold">Accounts<span class="float-right" id="accPerc">30%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" id="accPerc1" style= "color: #c81c5a" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">ATM<span class="float-right" id="atmPerc">20%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-danger" role="progressbar" id="atmPerc1" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Cheques<span class="float-right" id="chqPerc">40%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-warning" role="progressbar" id="chqPerc1" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Exchange<span class="float-right" id="excPerc">60%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar" role="progressbar" id="excPerc1" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">Loan<span class="float-right" id="lonPerc">80%</span></h4>
+                  <div class="progress mb-4">
+                    <div class="progress-bar bg-info" role="progressbar" id="lonPerc1" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <h4 class="small font-weight-bold">General<span class="float-right" id="genPerc">10%</span></h4>
+                  <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" id="genPerc1" style="width: 10%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pie Chart -->
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4" style="min-height:470px">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Feedback</h6>
+                  <div class="dropdown no-arrow">
+                  </div>
+                </div>
+
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-pie pt-4 pb-2">
+                    <canvas id="myPieChart"></canvas>
+                  </div>
+                  <div class="mt-4 text-center small">
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-primary"></i> Poor
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-success"></i> Okay
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text-info"></i> Good
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text" style="color: #c81c5a;"></i> Excellent
+                    </span>
+                    <span class="mr-2">
+                      <i class="fas fa-circle text" style="color: #c88a1c;"></i> Outstanding
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Group2 Dashboard 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+<script>
+
+// FETCH COMMANDS IN JS TO GET INFO FROM API
+
+var tix = document.getElementById('user_card');
+var row = document.getElementById('user_card_row');
+var mainrow = document.getElementById('user_card_mainrow');
+var newItems = document.createElement('div');
+
+fetch('http://34.87.233.248:5000/show/alltickets')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    var no_people = document.getElementById('no.people');
+    no_people.innerHTML = ""+data['alltickets'].length;
+    for (i = 0; i < data['alltickets'].length; i++) { 
+      var entry = data['alltickets']
+      var newItems = document.createElement('div');
+      newItems.innerHTML = '<div class="col-xl-3 col-md-6 mb-4"><div class="card border-left-primary shadow h-100 py-2" style="width:290px"><div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"><h6 class="text-s font-weight-bold text-primary text-uppercase mb-1">Customer '+(i+1)+'</h6><div class="dropdown no-arrow"><a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i></a><div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" onclick="myFunction('+(i+1)+')">Next Customer</a></div></div></div><div class="card-body"><div class="row no-gutters align-items-center"><div class="col mr-2"><div class="text-s h7 mb-0 text-gray-800">Name: '+entry[i].name+'</div><div class="text-s h7 mb-0 text-gray-800">Type of service: '+entry[i].service+'</div><div class="text-s h7 mb-0 text-gray-800">Ticket Number: '+entry[i].ticket+' '+entry[i].counter+'</div></div></div></div></div></div>';
+
+      row.appendChild(newItems);
+    }
+    tix.appendChild(row);
+    mainrow.appendChild(tix);
+  });
+
+
+var srvd = document.getElementById('srvd.people')
+fetch('http://34.87.233.248:5000/show/servedpeople')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data)
+    console.log(data.num_people_served)
+    console.log(srvd.innerHTML)
+    srvd.innerHTML = data.num_people_served;
+  });
+
+fetch('http://34.87.233.248:5000/show/logs')
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    var temp = document.getElementById('lonPerc');
+    var temp2 = parseInt(data.loans)
+    temp.innerHTML = temp2+"%"
+    document.getElementById("lonPerc1").style.width = data.loans+'%';
+
+    temp = document.getElementById('accPerc');
+    temp2 = parseInt(data.accounts)
+    temp.innerHTML = temp2+"%"
+    document.getElementById("accPerc1").style.width = temp2+"%";
+    
+    temp = document.getElementById('genPerc');
+    var temp2 = parseInt(data.general)
+    temp.innerHTML = temp2+"%"
+    document.getElementById("genPerc1").style.width = data.general+'%';
+    
+    temp = document.getElementById('chqPerc');
+    var temp2 = parseInt(data.cheques)
+    temp.innerHTML = temp2+"%"
+    document.getElementById("chqPerc1").style.width = data.cheques+'%';
+    
+    temp = document.getElementById('atmPerc');
+    var temp2 = parseInt(data.atm)
+    temp.innerHTML = temp2+"%"
+    document.getElementById("atmPerc1").style.width = data.atm+'%';
+    
+    temp = document.getElementById('excPerc');
+    var temp2 = parseInt(data.exchange)
+    temp.innerHTML = temp2+"%"
+    document.getElementById("excPerc1").style.width = data.exchange+'%';
+
+  });
+
+function myFunction(key) {
+  console.log(key)
+  var list = document.getElementById("user_card_row");
+  var findtix = list.childNodes[key].innerHTML;
+  console.log(findtix)
+  let tag = findtix.match(/Ticket Number: (.*) /);
+  console.log(tag[1])
+
+  fetch('http://34.87.233.248:5000/queue/'+tag[1].toString(), {
+    method: 'DELETE',
+  })
+  .then((response) => {
+    if (!response.ok){
+      alert("NO SUCH TICKET");
+      return
+    }
+    return response.json();
+  })
+  .then((data) => {
+    list.removeChild(list.childNodes[key]);
+    window.location.reload(true); 
+  });
+
+// http://34.87.233.248:3000
+// http://34.87.233.248:5000
+}
+
+</script>
+
+</script type="text/JavaScript" src="jquery-3.5.0.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+    setInterval(function(){
+      $('#result').load('v');
+    }, 1000);
+  });
+
+
+</script>
+</body>
+</html>
