@@ -12,4 +12,4 @@ This figure shows how the main page of Dashboard looks like.
 
 This figure shows all the graphical representations as mentioned above.
 
-![Image description](link-to-image)
+![Image description](https://github.com/bhawnakundu/COMP6324/blob/master/Images/Screen%20Shot%202020-04-19%20at%2011.12.49%20pm.png)
