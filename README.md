@@ -4,6 +4,12 @@ For this project, we were asked to build a solution for "Making bank branches en
 
 I designed a Dashboard which shows all the activity of how many customers are in queue, what service do they need. We used machine learning to forecast how many customers are expected on a particular day and at some particular time which are shows using line charts, pie charts and other graphs.
 
-![Image description](link-to-image)
+# Screenshots
+
+This figure shows how the main page of Dashboard looks like.
+
+![Image description](https://github.com/bhawnakundu/COMP6324/blob/master/Images/Screen%20Shot%202020-04-19%20at%2011.12.27%20pm.png)
+
+This figure shows all the graphical representations as mentioned above.
 
 ![Image description](link-to-image)
